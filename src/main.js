@@ -11,9 +11,12 @@ import '../src/assets/Css/login.css';
 // import './assets/image/login-image/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { createPinia } from 'pinia';
 
 // import './assets/fonts/vazir';
 const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
 app.use(router); // Make sure Vue Router is used
 app.mount('#app'); // Mount the app
 

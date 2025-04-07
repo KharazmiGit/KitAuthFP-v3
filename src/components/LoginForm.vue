@@ -91,9 +91,15 @@ export default {
                 const response = await axios.post("http://127.0.0.1:8000/api/token/", this.credentials);
                 const { access, refresh } = response.data;
 
+                const userId = response.data.userId; // فرض کنید سرور user ID را در پاسخ ارسال می‌کند
+                localStorage.setItem('userId', userId);
+
                 // ذخیره توکن‌ها در localStorage
-                sessionStorage.setItem("access_token", access);
-                sessionStorage.setItem("refresh_token", refresh);
+                localStorage.setItem("access_token", access);
+                localStorage.setItem("refresh_token", refresh);
+
+                // تنظیم وضعیت لاگین
+                localStorage.setItem("isAuthenticated", "true");
 
                 // هدایت به صفحه لیست کاربران
                 this.$router.push("/users");
